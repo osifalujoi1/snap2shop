@@ -7,9 +7,6 @@ from tensorflow.keras.applications.mobilenet_v2 import (
     decode_predictions
 )
 from PIL import Image
-import webbrowser
-import os
-os.system("pip install google-search-results")
 from serpapi import GoogleSearch
 
 
