@@ -10,10 +10,6 @@ from PIL import Image
 from serpapi import GoogleSearch
 
 
-def search_marketplaces(query):
-    search_query = f"{query} site:amazon.com OR site:ebay.com OR site:aliexpress.com OR site:google.com/shopping"
-    search_url = f"https://www.google.com/search?q={search_query.replace(' ', '+')}"
-    return search_url
 
 def load_model():
     model = MobileNetV2(weights="imagenet")
@@ -96,13 +92,8 @@ def main():
     # Show "Find Where to Buy" if classification happened
     if st.session_state.get("top_label"):
         st.subheader("Find Where to Buy")
-        search_url = search_marketplaces(st.session_state.top_label)
 
         if st.button("Search Online Marketplaces"):
-            st.markdown(
-                f"[Click here to search for '{st.session_state.top_label}']({search_url})",
-                unsafe_allow_html=True
-            )
             # st.markdown(f"Google search results: {dict_results}")
             col1, col2, col3 = st.columns(3)
             columns = [col1, col2, col3]
